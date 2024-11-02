@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digtal Clock</title>
+    <title>Responsive Digital Clock</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main class="container">
-        <h1 class="day" id="day"></h1>
+        <!-- Day title -->
+        <h1 class="day" id="day">Day</h1>
+
+        <!-- Box containing the clock sections -->
         <div class="box">
+            <!-- Hour section -->
             <div class="clock">
                 <div class="front-clock">
                     <div id="hour">00</div>
@@ -17,6 +21,7 @@
                 </div>
             </div>
 
+            <!-- Minute section -->
             <div class="clock">
                 <div class="front-clock">
                     <div id="minute">00</div>
@@ -24,6 +29,7 @@
                 </div>
             </div>
 
+            <!-- Second section -->
             <div class="clock">
                 <div class="front-clock">
                     <div id="second">00</div>
@@ -32,6 +38,24 @@
             </div>
         </div>
     </main>
-    <script src="script.js"></script>
+
+    <!-- JavaScript to update the clock dynamically -->
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+
+            // Pad single digits with a leading zero
+            document.getElementById('hour').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minute').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('second').textContent = String(seconds).padStart(2, '0');
+        }
+
+        // Update the clock every second
+        setInterval(updateClock, 1000);
+        updateClock(); // Initial call to set the time immediately
+    </script>
 </body>
 </html>
