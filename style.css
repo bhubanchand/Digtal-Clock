@@ -11,66 +11,67 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 10px; /* Add some padding to avoid content sticking to edges */
 }
 
-/* Container holding the clocks */
+/* Container for the entire clock */
 .container {
-    height: 45%;
-    width: 45%;
+    height: auto;
+    width: 80%;
+    max-width: 450px; /* Set max width to prevent it from stretching too much on larger screens */
     display: grid;
-    grid-template-rows: 35% 65%;
+    grid-template-rows: auto 1fr;
     align-items: center;
     justify-content: center;
     border: .3rem solid #1a1a1a;
     border-radius: 3rem;
+    padding: 20px; /* Add padding to ensure spacing inside the container */
 }
 
-/* Title styling */
+/* Styling the title */
 h1 {
-    margin-top: 3rem;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     text-align: center;
     padding: 0 1rem;
     border-bottom: 2px solid #1a1a1a;
+    margin-bottom: 20px;
     background: linear-gradient(90deg, #00dbde, #fc00ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-/* Box that wraps the clocks */
+/* Box containing the clocks */
 .box {
-    height: 100%;
     width: 100%;
     display: flex;
+    flex-direction: column; /* Stack clocks vertically on small screens */
     align-items: center;
-    justify-content: center;
 }
 
-/* Clock styling */
+/* Clock design */
 .clock {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0 .5rem;
-    width: 70%;
-    height: 8rem;
-    align-items: center;
+    margin: 1rem 0;
+    width: 100%;
+    height: 7rem;
     color: #fff;
     background-color: #1a1a1a;
     position: relative;
     border-radius: 1rem;
-    font-size: 4rem;
+    font-size: 3rem;
     overflow: hidden;
 }
 
-/* Clock text (hours, minutes, seconds) */
+/* Clock labels (hours, minutes, seconds) */
 .clock p {
     font-size: 1rem;
 }
 
-/* Animation styling for rotating gradients on the clocks */
-.clock::before {
+/* Clock gradient animation */
+.clock::before, .clock::after {
     content: "";
     position: absolute;
     top: -50%;
@@ -84,16 +85,7 @@ h1 {
 }
 
 .clock::after {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 90%;
-    height: 8rem;
     background: linear-gradient(0deg, transparent, transparent, #b91fdc, #b91fdc, #b91fdc);
-    z-index: 0;
-    transform-origin: bottom right;
-    animation: animate 5s linear infinite;
     animation-delay: -3s;
 }
 
@@ -107,7 +99,7 @@ h1 {
     }
 }
 
-/* Front display of the clock */
+/* Inner clock container */
 .front-clock {
     text-align: center;
     padding-top: .6rem;
@@ -118,49 +110,37 @@ h1 {
     z-index: 1;
 }
 
-/* Responsive design for medium screens */
-@media (max-width: 890px) {
-    .container {
-        width: 80%;  /* Increase width for medium screens */
-        height: auto;
-    }
-    .clock {
-        font-size: 2.5rem;  /* Reduce clock font size */
-    }
-}
-
-/* Responsive design for smaller screens */
-@media (max-width: 590px) {
+/* Media queries for medium screens */
+@media (max-width: 768px) {
     .container {
         width: 90%;
-        grid-template-rows: auto auto;
+        padding: 10px; /* Adjust padding to fit on medium screens */
     }
     h1 {
-        margin-top: 0;
-        font-size: 2rem; /* Adjust title size */
-    }
-    .box {
-        display: flex;
-        flex-direction: column; /* Stack clocks vertically */
-        align-items: center;
+        font-size: 2rem; /* Reduce title font size */
     }
     .clock {
-        width: 80%; /* Make clocks take up more space */
-        font-size: 3rem; /* Reduce font size for smaller screens */
+        font-size: 2.5rem; /* Reduce clock font size */
+        height: 6rem;
     }
 }
 
-/* Extra small screens */
-@media (max-width: 400px) {
+/* Media queries for small screens */
+@media (max-width: 480px) {
     .container {
-        width: 95%;  /* Almost full width on very small screens */
-        grid-template-rows: auto auto;
+        width: 95%; /* Take up most of the screen */
+        padding: 5px;  /* Less padding to avoid squeezing content */
     }
     h1 {
-        font-size: 1.5rem; /* Further reduce title font size */
+        font-size: 1.8rem; /* Further reduce title font size */
+        margin-bottom: 10px;
     }
     .clock {
-        width: 100%;  /* Clocks take full width */
-        font-size: 2rem;  /* Further reduce font size */
+        font-size: 2rem; /* Smaller clock font size */
+        height: 5rem; /* Adjust clock height */
+        margin: 0.5rem 0; /* Less margin between clocks */
+    }
+    .clock p {
+        font-size: 0.8rem; /* Smaller text for clock labels */
     }
 }
