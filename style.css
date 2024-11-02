@@ -1,9 +1,10 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body{
+
+body {
     background-color: #0d0d0d;
     font-family: sans-serif;
     height: 100vh;
@@ -11,17 +12,20 @@ body{
     justify-content: center;
     align-items: center;
 }
-.container{
-height: 45%;
-width: 45%;
-display: grid;
-grid-template-rows: 35% 65%;
-align-items: center;
-justify-content: center;
-border: .3rem solid #1a1a1a;
-border-radius: 3rem;
+
+/* Container holding the clocks */
+.container {
+    height: 45%;
+    width: 45%;
+    display: grid;
+    grid-template-rows: 35% 65%;
+    align-items: center;
+    justify-content: center;
+    border: .3rem solid #1a1a1a;
+    border-radius: 3rem;
 }
 
+/* Title styling */
 h1 {
     margin-top: 3rem;
     font-size: 3.5rem;
@@ -32,7 +36,9 @@ h1 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.box{
+
+/* Box that wraps the clocks */
+.box {
     height: 100%;
     width: 100%;
     display: flex;
@@ -40,6 +46,7 @@ h1 {
     justify-content: center;
 }
 
+/* Clock styling */
 .clock {
     display: flex;
     flex-direction: column;
@@ -57,21 +64,23 @@ h1 {
     overflow: hidden;
 }
 
-.clock p{
+/* Clock text (hours, minutes, seconds) */
+.clock p {
     font-size: 1rem;
 }
 
+/* Animation styling for rotating gradients on the clocks */
 .clock::before {
-content: "";
-position: absolute;
-top: -50%;
-left: -50%;
-width: 90%;
-height: 8rem;
-background: linear-gradient(0deg, transparent, transparent, #2370f5, #2370f5, #2370f5);
-z-index: 1;
-transform-origin: bottom right;
-animation: animate 5s linear infinite;
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 90%;
+    height: 8rem;
+    background: linear-gradient(0deg, transparent, transparent, #2370f5, #2370f5, #2370f5);
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 5s linear infinite;
 }
 
 .clock::after {
@@ -88,6 +97,7 @@ animation: animate 5s linear infinite;
     animation-delay: -3s;
 }
 
+/* Animation keyframes */
 @keyframes animate {
     0% {
         transform: rotate(0deg);
@@ -97,6 +107,7 @@ animation: animate 5s linear infinite;
     }
 }
 
+/* Front display of the clock */
 .front-clock {
     text-align: center;
     padding-top: .6rem;
@@ -107,50 +118,49 @@ animation: animate 5s linear infinite;
     z-index: 1;
 }
 
+/* Responsive design for medium screens */
 @media (max-width: 890px) {
     .container {
-        width: 80%;
+        width: 80%;  /* Increase width for medium screens */
         height: auto;
     }
     .clock {
-        font-size: 2.5rem;
+        font-size: 2.5rem;  /* Reduce clock font size */
     }
 }
 
+/* Responsive design for smaller screens */
 @media (max-width: 590px) {
     .container {
-        grid-template-rows: 20% 30%;
         width: 90%;
         grid-template-rows: auto auto;
     }
     h1 {
-        font-size: 2rem;
         margin-top: 0;
+        font-size: 2rem; /* Adjust title size */
     }
     .box {
         display: flex;
-        flex-direction: column;
+        flex-direction: column; /* Stack clocks vertically */
         align-items: center;
-        grid-template-rows: 33% 33% 33%;
     }
     .clock {
-        width: 80%;
-        margin: 0;
-        font-size: 3rem;
-        margin-top: .8rem;
+        width: 80%; /* Make clocks take up more space */
+        font-size: 3rem; /* Reduce font size for smaller screens */
     }
 }
 
+/* Extra small screens */
 @media (max-width: 400px) {
     .container {
-        width: 95%;  /* Max out the container width */
+        width: 95%;  /* Almost full width on very small screens */
         grid-template-rows: auto auto;
     }
     h1 {
-        font-size: 1.5rem; /* Make the title smaller */
+        font-size: 1.5rem; /* Further reduce title font size */
     }
     .clock {
         width: 100%;  /* Clocks take full width */
-        font-size: 2rem; /* Further reduce font size */
+        font-size: 2rem;  /* Further reduce font size */
     }
 }
