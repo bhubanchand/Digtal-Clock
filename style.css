@@ -119,6 +119,7 @@ animation: animate 5s linear infinite;
 
 @media (max-width: 590px) {
     .container {
+        grid-template-rows: 20% 30%;
         width: 90%;
         grid-template-rows: auto auto;
     }
